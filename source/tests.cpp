@@ -24,10 +24,12 @@ int aufgabe13(){
 
 int sumMultiples(){
   int sum = 0;
-  for(int i = 1; i < 1001; i++){
+  int i = 1;
+  while(i < 1001){
     if(i%3 == 0 or i%5 == 0){
       sum = sum + i;
     }
+    i++;
   }
   return sum;
 }
@@ -70,8 +72,14 @@ int binomial( int a, int b){
   } 
 }
 
-
-
+int checksum(int a){
+ int csum = 0;
+ while (a > 0) {
+  csum = csum +(a % 10);
+  a = a/10;
+  }
+  return csum;
+}
 
 
 TEST_CASE ( "describe_gcd" , "[gcd]" )
@@ -102,15 +110,6 @@ REQUIRE ( binomial (8,3) == 56);
 REQUIRE ( binomial (2,1) == 2);
 }
 
-int checksum(int a){
- int csum=0;
- while (a > 0) {
-  csum = csum +(a % 10);
-  a = a/10;
-  }
-  return csum;
-}
-
 TEST_CASE ( "decribe_checksum", "[checksum]")
 {
 REQUIRE ( checksum (234) == 9);
@@ -120,6 +119,6 @@ REQUIRE ( checksum (134) == 8);
 
 int main(int argc, char* argv[])
 {
-  std :: cout << "";
+  std :: cout << "sumMultiples: " << sumMultiples();
   return Catch::Session().run(argc, argv);
 }
