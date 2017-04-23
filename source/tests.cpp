@@ -4,9 +4,9 @@
 
 int gcd ( int a , int b ){
 if (b==0)
-return a;
+  return a;
 else
-return gcd(b, a%b);
+  return gcd(b, a%b);
 }
 
 int aufgabe13(){
@@ -14,10 +14,10 @@ int aufgabe13(){
   while(true){
     if(i%20==0 && i%19==0 && i%18==0 && i%17==0 
     && i%16==0 && i%15==0 && i%14==0 &&
-    i%13==0 && i%12==0 && i%11==0 ){
+    i%13==0 && i%12==0 && i%11==0){
       return i;
     }else{
-      i = i+2;
+      i = i+20;
     }
   }
 }
@@ -81,6 +81,38 @@ int checksum(int a){
   return csum;
 }
 
+float fract(float a){
+  while (a > 1){
+    a -= 1;
+  }
+  return a;
+}
+
+float cylinder_volume(float r, float h){
+  return M_PI*pow(r,2)*h;
+}
+
+float cylinder_area(float r, float h){
+  return 2*M_PI*r*h+2*M_PI*pow(r,2);
+}
+
+
+TEST_CASE ( "describe_cylinder_area" , "[cylinder_area]" )
+{
+REQUIRE ( cylinder_area(5.1,2.9) == Approx(256.35).epsilon(0.001));
+}
+
+TEST_CASE ( "describe_cylinder_volume" , "[cylinder_volume]" )
+{
+REQUIRE ( cylinder_volume(1,5.5) == Approx(17.28).epsilon(0.001));
+}
+
+TEST_CASE ( "describe_fract" , "[fract]" )
+{
+REQUIRE ( fract(6.98) == Approx(0.98).epsilon(0.001));
+REQUIRE ( fract(0.87) == Approx(0.87).epsilon(0.001));
+REQUIRE ( fract(6.988888) == Approx(0.988888).epsilon(0.001));
+}
 
 TEST_CASE ( "describe_gcd" , "[gcd]" )
 {
@@ -114,11 +146,11 @@ TEST_CASE ( "decribe_checksum", "[checksum]")
 {
 REQUIRE ( checksum (234) == 9);
 REQUIRE ( checksum (123) == 6);
-REQUIRE ( checksum (134) == 8);
+REQUIRE ( checksum (113509) == 19);
 }
 
 int main(int argc, char* argv[])
 {
-  std :: cout << "sumMultiples: " << sumMultiples();
+  std :: cout << "sumMultiples: " << sumMultiples() << "\nAufgabe13: " << aufgabe13() << "\n";
   return Catch::Session().run(argc, argv);
 }
