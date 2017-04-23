@@ -96,6 +96,14 @@ float cylinder_area(float r, float h){
   return 2*M_PI*r*h+2*M_PI*pow(r,2);
 }
 
+double mileToKilometer(double mile){
+  return mile*1.60934;
+}
+
+TEST_CASE ( "describe_mileToKilometer" , "[mileToKilometer]" )
+{
+REQUIRE ( mileToKilometer(25) == Approx(40.2336).epsilon(0.001));
+}
 
 TEST_CASE ( "describe_cylinder_area" , "[cylinder_area]" )
 {
