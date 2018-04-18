@@ -1,4 +1,4 @@
-# Install script for directory: /home/max/Documents/Uni/Progspr/programmiersprachen-aufgabe-1/source
+# Install script for directory: /home/max/Documents/Uni/2.Semester/ProgSpr/programmiersprachen-aufgabe-1/source
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
